@@ -1,7 +1,6 @@
 # Game Concept
 
-#Assignee
-@huimeng zhou
+Huimeng Zhou
 
 In a future world where Earth faces extreme resource scarcity, humanity has built a single remaining survival base. Only individuals who are highly intelligent or hold significant power are allowed to live inside the base. Ordinary people are abandoned across the ruined Earth.
 
