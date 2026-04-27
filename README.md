@@ -1,5 +1,8 @@
 # Game Concept
 
+#Assignee
+@huimeng zhou
+
 In a future world where Earth faces extreme resource scarcity, humanity has built a single remaining survival base. Only individuals who are highly intelligent or hold significant power are allowed to live inside the base. Ordinary people are abandoned across the ruined Earth.
 
 The solar system has collapsed, and the distances between celestial bodies have become too vast to travel, making interplanetary escape impossible.
