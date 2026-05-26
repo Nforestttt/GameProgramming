@@ -8,14 +8,18 @@ IInteractable
 
     SpriteRenderer sr;
 
-    public GameObject[]
-    fruitPrefabs;
+    [Header("Loot Settings")]
+    public GameObject[] fruitPrefabs;
+
+    [Min(1)]
+    public int fruitCount = 2;
+
+    [Min(0f)]
+    public float spawnRadius = 1.5f;
 
     void Start()
     {
-        sr =
-        GetComponent
-        <SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void Interact(
@@ -26,23 +30,19 @@ IInteractable
 
         opened = true;
 
-        sr.color =
-        Color.gray;
+        sr.color = Color.gray;
 
         SpawnLoot();
     }
 
     void SpawnLoot()
     {
-        Debug.Log("Spawn Loot");
-        Debug.Log(fruitPrefabs.Length);
-        //Debug.DrawRay(transform.position, offset, Color.red, 2f);
-        int count = 2;
-      // Random.Range(1, 2);
+        Debug.Log(
+        $"Spawn {fruitCount} fruits");
 
         for (
         int i = 0;
-        i < count;
+        i < fruitCount;
         i++)
         {
             int index =
@@ -52,7 +52,7 @@ IInteractable
 
             Vector2 offset =
             Random.insideUnitCircle
-            * 1.5f;
+            * spawnRadius;
 
             Instantiate(
             fruitPrefabs[index],
@@ -61,8 +61,11 @@ IInteractable
             + offset,
             Quaternion.identity);
 
-            //µ÷ÊÔÉú³É
-            Debug.DrawRay(transform.position, offset, Color.red, 2f);
+            Debug.DrawRay(
+            transform.position,
+            offset,
+            Color.red,
+            2f);
         }
     }
 }
