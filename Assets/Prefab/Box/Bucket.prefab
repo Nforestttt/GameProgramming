@@ -144,6 +144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6936450413548345374, guid: f169aa4d404c1914a85d54e80268f443, type: 3}
+  - {fileID: 2777679484837796404, guid: 9f723213776b5254c864953d3f41a2d8, type: 3}
+  - {fileID: 5941071765727251889, guid: e33b8e790e149684f834a22dc4b555ef, type: 3}
+  - {fileID: 5606375688344370620, guid: 5215efd3519c200498e158ebdc58db48, type: 3}
+  - {fileID: 475194945422684024, guid: 2cca59c1efd6c33448b6186e683e0c03, type: 3}
+  - {fileID: 471449350567551715, guid: cd78db363eb0782449d92e2bdcc82279, type: 3}
+  - {fileID: 6613636802637418555, guid: 5ec5f657efedd4648a40714edafd0acb, type: 3}
+  - {fileID: 8358611719301173659, guid: 0f87a5fb9a411a946897faffa37daeed, type: 3}
+  - {fileID: 6186210879029745481, guid: ad4475327ee7b1c499805aef277d10f6, type: 3}
+  - {fileID: 3394531906615752009, guid: 8ef10625a5889074ab930fd10528d60b, type: 3}
+  - {fileID: 6174317368770263297, guid: ba681e4fa4278c548a814f719371be9c, type: 3}
+  - {fileID: 2633746904808539715, guid: a66f6bdad5c6df44d9288a7de9f741d6, type: 3}
+  fruitCount: 2
+  spawnRadius: 1.5
