@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager :
+MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static
+    TimeManager
+    Instance;
+
+    public Era
+    currentEra =
+    Era.Future;
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeEra(
+    Era era)
     {
-        
+        currentEra = era;
     }
 }
