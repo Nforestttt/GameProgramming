@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager :
+MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static
+    TimeManager
+    Instance;
+
+    public GameLocation
+    currentLocation =
+    GameLocation.FutureBase;
+
+    //和mission manager 的原理是一样的
+    void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeLocation(
+    GameLocation location1)
     {
-        
+        currentLocation = location1;
     }
 }

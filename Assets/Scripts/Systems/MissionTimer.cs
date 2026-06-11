@@ -1,12 +1,67 @@
 using UnityEngine;
 
-public class MissionTimer :
-MonoBehaviour
+public class MissionTimer : MonoBehaviour
 {
-    public float
-    maxTime = 300f;
+    public static MissionTimer Instance;
 
-    float currentTime;
+    public float maxTime = 300f;
 
-    bool running;
+    private float currentTime;
+
+    private bool running;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        currentTime = maxTime;
+    }
+
+    void Update()
+    {
+        if (!running)
+            return;
+
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0)
+        {
+            currentTime = 0;
+            running = false;
+
+            MissionFailed();
+        }
+    }
+
+    public void StartTimer()
+    {
+        currentTime = maxTime;
+        running = true;
+    }
+
+    public void StopTimer()
+    {
+        running = false;
+    }
+
+    public float GetRemainingTime()
+    {
+        return currentTime;
+    }
+
+    void MissionFailed()
+    {
+        Debug.Log("Time Up!");
+    }
 }
