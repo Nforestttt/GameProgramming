@@ -2,22 +2,55 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;      
-    public float smoothing = 5f;  
-    public Vector3 offset;        
+    [Header("Follow Settings")]
+    public float smoothing = 5f;
+
+    private Transform target;
+
+    private Vector3 offset = new Vector3(0f, 0f, -10f);
 
     void Start()
     {
-        offset = transform.position - target.position;
+        FindPlayer();
+        SnapToTarget();
     }
 
     void LateUpdate()
     {
-        if (target != null)
+        // 防止场景切换时找不到Player
+        if (target == null)
         {
-            Vector3 targetCamPos = target.position + offset;
-
-            transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+            FindPlayer();
+            return;
         }
+
+        Vector3 targetPosition =
+            target.position + offset;
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetPosition,
+            smoothing * Time.deltaTime
+        );
+    }
+
+    void FindPlayer()
+    {
+        GameObject player =
+            GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            target = player.transform;
+        }
+    }
+
+    public void SnapToTarget()
+    {
+        if (target == null)
+            return;
+
+        transform.position =
+            target.position + offset;
     }
 }

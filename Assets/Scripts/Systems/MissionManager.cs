@@ -7,9 +7,18 @@ MonoBehaviour
     MissionManager
     Instance;
 
+    //这里的awake 改成这样就不会重复生成很多instance 出来不停覆盖了
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void StartMission()

@@ -19,4 +19,9 @@ MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    public void playerCaught()
+    {
+        Debug.Log("player caught");
+    }
 }
