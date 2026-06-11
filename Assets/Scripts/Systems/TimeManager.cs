@@ -7,18 +7,27 @@ MonoBehaviour
     TimeManager
     Instance;
 
-    public Era
-    currentEra =
-    Era.Future;
+    public GameLocation
+    currentLocation =
+    GameLocation.FutureBase;
 
+    //和mission manager 的原理是一样的
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void ChangeEra(
-    Era era)
+    public void ChangeLocation(
+    GameLocation location1)
     {
-        currentEra = era;
+        currentLocation = location1;
     }
 }
