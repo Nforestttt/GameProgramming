@@ -179,7 +179,8 @@ MonoBehaviour:
   waitTime: 1
   player: {fileID: 0}
   detectionRange: 3
-  chaseSpeed: 3.5
+  chaseSpeed: 5
+  maxChaseDistance: 6
 --- !u!95 &63884884
 Animator:
   serializedVersion: 5
@@ -18543,7 +18544,8 @@ MonoBehaviour:
   waitTime: 1
   player: {fileID: 0}
   detectionRange: 3
-  chaseSpeed: 3.5
+  chaseSpeed: 5
+  maxChaseDistance: 6
 --- !u!95 &1240400823
 Animator:
   serializedVersion: 5
