@@ -22,6 +22,9 @@ MonoBehaviour
 
     public void playerCaught()
     {
-        Debug.Log("player caught");
+        MissionTimer.Instance.StopTimer();
+        SceneTransitionManager.Instance.targetSpawnPoint = "Portal-from-Medieval";
+
+        SceneTransitionManager.Instance.LoadLocation(GameLocation.FutureLab);
     }
 }

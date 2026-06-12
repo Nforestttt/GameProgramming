@@ -14,12 +14,25 @@ public class SceneTransitionManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject spawn = GameObject.Find(targetSpawnPoint);
+
+        if (spawn != null && PlayerSingleton.Instance != null)
+        {
+            PlayerSingleton.Instance.transform.position = spawn.transform.position;
+        }
+    }
+
 
     public void LoadLocation(
         GameLocation location)
