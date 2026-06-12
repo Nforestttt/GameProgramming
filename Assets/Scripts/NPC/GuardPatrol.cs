@@ -13,34 +13,55 @@ public class GuardPatrol : MonoBehaviour
     public float detectionRange = 3f;
     public float chaseSpeed = 3.5f;
 
+    [Header("Chase Limit")]
+    public float maxChaseDistance = 6f;
+
     private int currentWaypoint = 0;
+
     private bool isWaiting = false;
     private bool isChasing = false;
+    private bool isReturning = false;
 
-    private float chasingDistance = 0.5f;
+    private float catchingDistance = 0.5f;
 
     private Animator animator;
     private Vector2 lastMoveDirection = Vector2.down;
 
     private bool hasCaughtPlayer = false;
 
+    private Vector3 guardStartPosition;
 
     void Start()
     {
         animator = GetComponent<Animator>();
 
         player =
-        GameObject.FindGameObjectWithTag("Player")
-        ?.transform;
+            GameObject.FindGameObjectWithTag("Player")
+            ?.transform;
+
+        guardStartPosition = transform.position;
     }
 
     void Update()
     {
+        if (player == null)
+        {
+            player =
+                GameObject.FindGameObjectWithTag("Player")
+                ?.transform;
+        }
+
         DetectPlayer();
 
         if (isChasing)
         {
             ChasePlayer();
+            return;
+        }
+
+        if (isReturning)
+        {
+            ReturnToPatrol();
             return;
         }
 
@@ -53,17 +74,17 @@ public class GuardPatrol : MonoBehaviour
     void DetectPlayer()
     {
         if (player == null)
-        {
-            Debug.Log("Player missing!");
             return;
-        }
+
+        if (isReturning)
+            return;
 
         float distance = Vector2.Distance(
             transform.position,
             player.position
         );
 
-        if (distance <= detectionRange)
+        if (!isChasing && distance <= detectionRange)
         {
             isChasing = true;
         }
@@ -72,13 +93,15 @@ public class GuardPatrol : MonoBehaviour
     void ChasePlayer()
     {
         Vector2 direction =
-            ((Vector2)player.position - (Vector2)transform.position).normalized;
+            ((Vector2)player.position -
+             (Vector2)transform.position).normalized;
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            player.position,
-            chaseSpeed * Time.deltaTime
-        );
+        transform.position =
+            Vector2.MoveTowards(
+                transform.position,
+                player.position,
+                chaseSpeed * Time.deltaTime
+            );
 
         animator.SetBool("IsMoving", true);
 
@@ -87,33 +110,111 @@ public class GuardPatrol : MonoBehaviour
 
         lastMoveDirection = direction;
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayer =
+            Vector2.Distance(
+                transform.position,
+                player.position
+            );
 
-        if(distance<=chasingDistance && !hasCaughtPlayer)
+        if (distanceToPlayer <= catchingDistance &&
+            !hasCaughtPlayer)
         {
-            //这里后面再加内容
             hasCaughtPlayer = true;
+
             GameManager.Instance.playerCaught();
         }
+
+        float distanceFromPost =
+            Vector2.Distance(
+                transform.position,
+                guardStartPosition
+            );
+
+        if (distanceFromPost > maxChaseDistance)
+        {
+            isChasing = false;
+            isReturning = true;
+        }
+    }
+
+    void ReturnToPatrol()
+    {
+        Vector2 direction =
+            ((Vector2)guardStartPosition -
+             (Vector2)transform.position).normalized;
+
+        transform.position =
+            Vector2.MoveTowards(
+                transform.position,
+                guardStartPosition,
+                moveSpeed * Time.deltaTime
+            );
+
+        animator.SetBool("IsMoving", true);
+
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
+
+        float distance =
+            Vector2.Distance(
+                transform.position,
+                guardStartPosition
+            );
+
+        if (distance < 0.1f)
+        {
+            isReturning = false;
+
+            currentWaypoint = FindNearestWaypoint();
+        }
+    }
+
+    int FindNearestWaypoint()
+    {
+        int nearestIndex = 0;
+
+        float nearestDistance =
+            Mathf.Infinity;
+
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            float distance =
+                Vector2.Distance(
+                    transform.position,
+                    waypoints[i].position
+                );
+
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestIndex = i;
+            }
+        }
+
+        return nearestIndex;
     }
 
     void MoveToWaypoint()
     {
-        Transform target = waypoints[currentWaypoint];
+        Transform target =
+            waypoints[currentWaypoint];
 
         Vector2 direction =
-            ((Vector2)target.position - (Vector2)transform.position).normalized;
+            ((Vector2)target.position -
+             (Vector2)transform.position).normalized;
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            target.position,
-            moveSpeed * Time.deltaTime
-        );
+        transform.position =
+            Vector2.MoveTowards(
+                transform.position,
+                target.position,
+                moveSpeed * Time.deltaTime
+            );
 
-        float distance = Vector2.Distance(
-            transform.position,
-            target.position
-        );
+        float distance =
+            Vector2.Distance(
+                transform.position,
+                target.position
+            );
 
         if (distance > 0.05f)
         {
@@ -136,8 +237,15 @@ public class GuardPatrol : MonoBehaviour
 
         animator.SetBool("IsMoving", false);
 
-        animator.SetFloat("MoveX", lastMoveDirection.x);
-        animator.SetFloat("MoveY", lastMoveDirection.y);
+        animator.SetFloat(
+            "MoveX",
+            lastMoveDirection.x
+        );
+
+        animator.SetFloat(
+            "MoveY",
+            lastMoveDirection.y
+        );
 
         yield return new WaitForSeconds(waitTime);
 
@@ -158,6 +266,15 @@ public class GuardPatrol : MonoBehaviour
         Gizmos.DrawWireSphere(
             transform.position,
             detectionRange
+        );
+
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawWireSphere(
+            Application.isPlaying
+                ? guardStartPosition
+                : transform.position,
+            maxChaseDistance
         );
     }
 }

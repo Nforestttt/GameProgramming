@@ -17,6 +17,11 @@ IInteractable
     [Min(0f)]
     public float spawnRadius = 1.5f;
 
+    [Header("Spawn Check")]
+    public LayerMask obstacleLayer;
+
+    public int maxAttempts = 20;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -37,35 +42,57 @@ IInteractable
 
     void SpawnLoot()
     {
-        Debug.Log(
-        $"Spawn {fruitCount} fruits");
+        Debug.Log($"Spawn {fruitCount} fruits");
 
-        for (
-        int i = 0;
-        i < fruitCount;
-        i++)
+        for (int i = 0; i < fruitCount; i++)
         {
-            int index =
-            Random.Range(
-            0,
-            fruitPrefabs.Length);
+            SpawnSingleFruit();
+        }
+    }
 
+    void SpawnSingleFruit()
+    {
+        for (int attempt = 0;
+             attempt < maxAttempts;
+             attempt++)
+        {
             Vector2 offset =
-            Random.insideUnitCircle
-            * spawnRadius;
+                Random.insideUnitCircle *
+                spawnRadius;
+
+            Vector2 spawnPos =
+                (Vector2)transform.position
+                + offset;
+
+            Collider2D hit =
+                Physics2D.OverlapCircle(
+                    spawnPos,
+                    0.2f,
+                    obstacleLayer
+                );
+
+            if (hit != null)
+            {
+                continue;
+            }
+
+            int index =
+                Random.Range(
+                    0,
+                    fruitPrefabs.Length
+                );
 
             Instantiate(
-            fruitPrefabs[index],
-            (Vector2)
-            transform.position
-            + offset,
-            Quaternion.identity);
+                fruitPrefabs[index],
+                spawnPos,
+                Quaternion.identity
+            );
 
-            Debug.DrawRay(
-            transform.position,
-            offset,
-            Color.red,
-            2f);
+            return;
         }
+
+        Debug.LogWarning(
+            "No valid loot position found!"
+        );
     }
 }
