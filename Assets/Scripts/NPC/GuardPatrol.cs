@@ -22,9 +22,16 @@ public class GuardPatrol : MonoBehaviour
     private Animator animator;
     private Vector2 lastMoveDirection = Vector2.down;
 
+    private bool hasCaughtPlayer = false;
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        player =
+        GameObject.FindGameObjectWithTag("Player")
+        ?.transform;
     }
 
     void Update()
@@ -46,7 +53,10 @@ public class GuardPatrol : MonoBehaviour
     void DetectPlayer()
     {
         if (player == null)
+        {
+            Debug.Log("Player missing!");
             return;
+        }
 
         float distance = Vector2.Distance(
             transform.position,
@@ -79,9 +89,10 @@ public class GuardPatrol : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        if(distance<=chasingDistance)
+        if(distance<=chasingDistance && !hasCaughtPlayer)
         {
             //这里后面再加内容
+            hasCaughtPlayer = true;
             GameManager.Instance.playerCaught();
         }
     }
