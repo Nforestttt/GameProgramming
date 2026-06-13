@@ -1,7 +1,7 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class IntroController : MonoBehaviour
 {
@@ -10,41 +10,60 @@ public class IntroController : MonoBehaviour
 
     private bool canContinue = false;
 
-    private string[] lines =
+    private string[] pages =
     {
-        "Year 5139",
-        "",
+        "Year 2189",
+
         "Earth's resources have nearly vanished.",
-        "",
-        "To preserve the last of humanity,",
-        "a single survival base was established.",
-        "",
-        "Only a few remain inside.",
-        "",
-        "A newly discovered quantum technology",
-        "allows communication with the past.",
-        "",
-        "Your mission is simple.",
-        "",
-        "Travel through time.",
-        "Gather resources.",
-        "Keep the base alive."
+
+        "Humanity survives inside a single base.",
+
+        "A quantum technology connects us to the past.",
+
+        "Gather resources. Protect the future."
     };
 
     private void Start()
     {
-        StartCoroutine(ShowStory());
+        StartCoroutine(PlayIntro());
     }
 
-    IEnumerator ShowStory()
+    IEnumerator PlayIntro()
     {
-        storyText.text = "";
+        Color color = storyText.color;
 
-        foreach (string line in lines)
+        foreach (string page in pages)
         {
-            storyText.text += line + "\n";
+            storyText.text = page;
 
-            yield return new WaitForSeconds(1.2f);
+            //
+            // Fade In
+            //
+            for (float a = 0; a <= 1; a += Time.deltaTime)
+            {
+                color.a = a;
+                storyText.color = color;
+
+                yield return null;
+            }
+
+            //
+            // Hold
+            //
+            yield return new WaitForSeconds(2f);
+
+            //
+            // Fade Out
+            //
+            for (float a = 1; a >= 0; a -= Time.deltaTime)
+            {
+                color.a = a;
+                storyText.color = color;
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.3f);
         }
 
         continueText.SetActive(true);

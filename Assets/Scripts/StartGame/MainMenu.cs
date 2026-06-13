@@ -7,4 +7,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("StoryIntroduction");
     }
+
+    public void StartInstruction()
+    {
+        SceneManager.LoadScene("Instruction");
+    }
+
+    public void BackFromIntruction()
+    {
+        SceneManager.LoadScene("BeginGame");
+    }
 }
