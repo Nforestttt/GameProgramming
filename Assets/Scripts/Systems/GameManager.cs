@@ -39,8 +39,20 @@ MonoBehaviour
         Debug.Log("停止timer 完毕");
         MissionFailUI.Instance.Show();
         Debug.Log("显示mission fail 完毕");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Debug.Log("等待两秒结束");
+
+        MissionFailUI.Instance.Hide();
+
+        GuardPatrol[] guards =
+       FindObjectsOfType<GuardPatrol>();
+
+        foreach (GuardPatrol guard in guards)
+        {
+            guard.ResetGuard();
+        }
+
+        missionFailing = false;
 
         SceneTransitionManager.Instance.targetSpawnPoint =
             "Portal-from-Medieval";
@@ -48,5 +60,6 @@ MonoBehaviour
         SceneTransitionManager.Instance.LoadLocation(
             GameLocation.FutureLab
         );
+
     }
 }

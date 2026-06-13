@@ -116,6 +116,7 @@ public class GuardPatrol : MonoBehaviour
                 player.position
             );
 
+        //这里和那个game manager 一样，也需要加一个hide 让has caught player 变成初始状态变成false
         if (distanceToPlayer <= catchingDistance &&
             !hasCaughtPlayer)
         {
@@ -135,6 +136,22 @@ public class GuardPatrol : MonoBehaviour
             isChasing = false;
             isReturning = true;
         }
+    }
+
+    //这个reset 很关键，可以写在报告里
+    public void ResetGuard()
+    {
+        hasCaughtPlayer = false;
+
+        isChasing = false;
+
+        isReturning = false;
+
+        isWaiting = false;
+
+        transform.position = guardStartPosition;
+
+        animator.SetBool("IsMoving", false);
     }
 
     void ReturnToPatrol()
