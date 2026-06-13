@@ -22,4 +22,11 @@ public class MissionFailUI : MonoBehaviour
 
         animator.SetTrigger("Show");
     }
+
+    public void Hide()
+    {
+        showing = false;
+
+        gameObject.SetActive(false);
+    }
 }
