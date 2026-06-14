@@ -53,8 +53,6 @@ public class SceneTransitionManager : MonoBehaviour
                 break;
 
             case GameLocation.Medieval:
-                MissionTimer.Instance.StartTimer();
-                Debug.Log("计时开始");
                 SceneManager.LoadScene("EuropeScene");
                 break;
         }

@@ -4,7 +4,7 @@ public class MissionTimer : MonoBehaviour
 {
     public static MissionTimer Instance;
 
-    public float maxTime = 300f;
+    public float maxTime = 30f;
 
     private float currentTime;
 
@@ -26,6 +26,7 @@ public class MissionTimer : MonoBehaviour
     void Start()
     {
         currentTime = maxTime;
+        Debug.Log("start mission timer: 30 second");
     }
 
     void Update()
@@ -63,5 +64,11 @@ public class MissionTimer : MonoBehaviour
     void MissionFailed()
     {
         Debug.Log("Time Up!");
+
+        SceneTransitionManager.Instance.targetSpawnPoint =
+            "Portal-from-Medieval";
+
+        SceneTransitionManager.Instance.LoadLocation(
+            GameLocation.FutureLab);
     }
 }

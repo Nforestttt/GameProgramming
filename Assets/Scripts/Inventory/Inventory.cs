@@ -14,7 +14,24 @@ MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        Debug.Log(
+            "Inventory Awake: " +
+            gameObject.name +
+            " ID=" +
+            GetInstanceID());
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Log(
+                "Destroy duplicate Inventory");
+
+            Destroy(gameObject);
+        }
     }
 
     public void Add(
@@ -36,5 +53,12 @@ MonoBehaviour
         item +
         " x" +
         items[item]);
+    }
+
+    public void ClearInventory()
+    {
+        items.Clear();
+
+        inventoryUI.Refresh();
     }
 }
