@@ -9247,6 +9247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: 1
   destinationSpawnPoint: Portal-from-base
+  portalSound: {fileID: 8300000, guid: 7a89db150c2d3fb478dc2af49910c6a0, type: 3}
 --- !u!1 &1583127704
 GameObject:
   m_ObjectHideFlags: 0
@@ -9374,6 +9375,8 @@ MonoBehaviour:
   - {fileID: 1061274948}
   moveSpeed: 3
   talkPrompt: {fileID: 1038762017}
+  baseVoice: {fileID: 8300000, guid: 86bbe9d5ccb75a54ba3c933dc7789e0d, type: 3}
+  submitSuccessSound: {fileID: 8300000, guid: 09ef13f9aa82a3b4d9bda46df7133d56, type: 3}
 --- !u!61 &1583127710
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12770,6 +12773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 30
+  missionCompleteSound: {fileID: 8300000, guid: 5c400c2ee637b6a44834c447e7cf7f5e, type: 3}
 --- !u!1 &2127627210
 GameObject:
   m_ObjectHideFlags: 0
@@ -12876,6 +12880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: 1
   destinationSpawnPoint: Portal-from-base
+  portalSound: {fileID: 8300000, guid: 7a89db150c2d3fb478dc2af49910c6a0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

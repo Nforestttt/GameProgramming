@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Kiwi
+  pickupSound: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}

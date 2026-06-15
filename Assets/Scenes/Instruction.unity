@@ -1368,6 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2c265e3b446d94db65ea6f180c63cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuBGM: {fileID: 8300000, guid: eaccbec505517864884b7ce39eef3cf4, type: 3}
+  buttonClick: {fileID: 8300000, guid: e804a666a337929448d4e863dbe532bf, type: 3}
 --- !u!4 &1378164216
 Transform:
   m_ObjectHideFlags: 0

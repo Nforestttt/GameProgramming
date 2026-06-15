@@ -10,6 +10,9 @@ public class MissionTimer : MonoBehaviour
 
     private bool running;
 
+    [Header("Audio")]
+    public AudioClip missionCompleteSound;
+
     void Awake()
     {
         if (Instance == null)
@@ -67,6 +70,9 @@ public class MissionTimer : MonoBehaviour
 
         SceneTransitionManager.Instance.targetSpawnPoint =
             "Portal-from-Medieval";
+
+        AudioManager.Instance.PlaySFX(missionCompleteSound);
+
 
         SceneTransitionManager.Instance.LoadLocation(
             GameLocation.FutureLab);

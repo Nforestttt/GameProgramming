@@ -12,6 +12,8 @@ public class Portal : MonoBehaviour
     //传送门是否被触发
     private bool playerInside = false;
 
+    public AudioClip portalSound;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -35,12 +37,19 @@ public class Portal : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //这里后面直接替换，到了这个门就触发提示框，然后按E就打开，点击yes 就可以输出
-            SceneTransitionManager.Instance.targetSpawnPoint =
-                destinationSpawnPoint;
-
-            SceneTransitionManager.Instance.LoadLocation(
-                destination);
+            StartCoroutine(Teleport());
         }
+    }
+
+    private IEnumerator Teleport()
+    {
+        AudioManager.Instance.PlaySFX(portalSound);
+
+        yield return new WaitForSeconds(0.3f);
+
+        SceneTransitionManager.Instance.targetSpawnPoint =
+            destinationSpawnPoint;
+
+        SceneTransitionManager.Instance.LoadLocation(destination);
     }
 }
