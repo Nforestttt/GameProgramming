@@ -754,6 +754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket
       objectReference: {fileID: 0}
+    - target: {fileID: 5106051992857139138, guid: 36826d24a1500d6469af22405d0955ef, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -772,6 +776,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1518904469}
     m_Modifications:
+    - target: {fileID: 2177093475077439736, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     - target: {fileID: 4076200763233414684, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
       propertyPath: m_Name
       value: BoxAndBucket (1)
@@ -6503,6 +6511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1518904469}
     m_Modifications:
+    - target: {fileID: 2177093475077439736, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     - target: {fileID: 4076200763233414684, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
       propertyPath: m_Name
       value: BoxAndBucket
@@ -17969,6 +17981,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7219110137245825118, guid: d21aca4d14da97b4099e9518c70a24aa, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18103,6 +18119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5106051992857139138, guid: 36826d24a1500d6469af22405d0955ef, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19072,6 +19092,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75d25c7e5a3ef845b2f5c32548dbf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1414001091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414001093}
+  - component: {fileID: 1414001092}
+  m_Layer: 0
+  m_Name: EuropeSceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1414001092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414001091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4cc14499a638e4e90e3e9872e40392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medievalBGM: {fileID: 8300000, guid: 0096620ccc6541a499d9adfc647d211d, type: 3}
+--- !u!4 &1414001093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414001091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 595.118, y: 219.85075, z: -5.186027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1443093134
 GameObject:
   m_ObjectHideFlags: 0
@@ -19576,6 +19641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: 1
   destinationSpawnPoint: Portal-from-Medieval
+  portalSound: {fileID: 0}
 --- !u!1 &1582340814
 GameObject:
   m_ObjectHideFlags: 0
@@ -19726,6 +19792,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1518904469}
     m_Modifications:
+    - target: {fileID: 2177093475077439736, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     - target: {fileID: 4076200763233414684, guid: 88adc4ce84e7b4148bba35694e97b41d, type: 3}
       propertyPath: m_Name
       value: BoxAndBucket
@@ -19823,6 +19893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6800280395998477349, guid: 14f0b22c510edd84b9b222cb9704fd5d, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     - target: {fileID: 7993257800122653268, guid: 14f0b22c510edd84b9b222cb9704fd5d, type: 3}
       propertyPath: m_Name
       value: ThreeBoxes
@@ -20207,6 +20281,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6800280395998477349, guid: 14f0b22c510edd84b9b222cb9704fd5d, type: 3}
+      propertyPath: chestOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e2ebec9dfd7bf449bc58a81180d3f92, type: 3}
     - target: {fileID: 7993257800122653268, guid: 14f0b22c510edd84b9b222cb9704fd5d, type: 3}
       propertyPath: m_Name
       value: ThreeBoxes (1)
@@ -20271,3 +20349,4 @@ SceneRoots:
   - {fileID: 327849130}
   - {fileID: 144735942}
   - {fileID: 1329253509}
+  - {fileID: 1414001093}

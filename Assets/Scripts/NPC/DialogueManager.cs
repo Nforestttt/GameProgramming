@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
 
     private bool isTalking = false;
 
+    private AudioClip currentDialogueSound;
+
     void Awake()
     {
         Instance = this;
@@ -29,17 +31,26 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string[] dialogueLines)
+    public void StartDialogue(
+    string[] dialogueLines,
+    AudioClip dialogueSound = null)
     {
         lines = dialogueLines;
 
         currentLine = 0;
+
+        currentDialogueSound = dialogueSound;
 
         isTalking = true;
 
         dialoguePanel.SetActive(true);
 
         dialogueText.text = lines[currentLine];
+
+        if (currentDialogueSound != null)
+        {
+            AudioManager.Instance.PlaySFX(currentDialogueSound);
+        }
     }
 
     void NextLine()
@@ -53,6 +64,11 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueText.text = lines[currentLine];
+
+        if (currentDialogueSound != null)
+        {
+            AudioManager.Instance.PlaySFX(currentDialogueSound);
+        }
     }
 
     void EndDialogue()

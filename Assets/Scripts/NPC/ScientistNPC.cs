@@ -29,6 +29,10 @@ public class ScientistNPC : MonoBehaviour
 
     private Vector2 lastMoveDirection = Vector2.down;
 
+
+    [Header("Voice")]
+    public AudioClip botVoice;
+
     void Start()
     {
         targetPoint = pointB;
@@ -62,7 +66,7 @@ public class ScientistNPC : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                DialogueManager.Instance.StartDialogue(dialogue);
+                DialogueManager.Instance.StartDialogue(dialogue,botVoice);
             }
 
             return;

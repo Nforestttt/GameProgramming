@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: 2
   destinationSpawnPoint: Portal-from-lab
+  portalSound: {fileID: 8300000, guid: 7a89db150c2d3fb478dc2af49910c6a0, type: 3}
 --- !u!1 &112128487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   pointB: {fileID: 2046759864}
   moveSpeed: 2
   talkPrompt: {fileID: 1166682859}
+  botVoice: {fileID: 8300000, guid: 4ec88e3232aa767478f315229c253807, type: 3}
 --- !u!61 &1447150477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1643,6 +1645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: 0
   destinationSpawnPoint: Portal-from-lab
+  portalSound: {fileID: 8300000, guid: 7a89db150c2d3fb478dc2af49910c6a0, type: 3}
 --- !u!1 &1532259942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,6 +1793,51 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1704698744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704698746}
+  - component: {fileID: 1704698745}
+  m_Layer: 0
+  m_Name: FutureMusicTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1704698745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704698744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8679a38414944478a1b0fe3ec3241e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  futureBGM: {fileID: 8300000, guid: eaccbec505517864884b7ce39eef3cf4, type: 3}
+--- !u!4 &1704698746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704698744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 595.118, y: 219.85075, z: -5.186027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1834180015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7628,3 +7676,4 @@ SceneRoots:
   - {fileID: 1660627812}
   - {fileID: 886758007}
   - {fileID: 112128489}
+  - {fileID: 1704698746}
