@@ -31,6 +31,12 @@ public class GuardPatrol : MonoBehaviour
 
     private Vector3 guardStartPosition;
 
+    [Header("Audio")]
+    public AudioClip alertSound;     // 警报（一次）
+    public AudioClip heartbeatSound; // 心跳（循环）
+
+    private bool alertPlayed = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -87,11 +93,21 @@ public class GuardPatrol : MonoBehaviour
         if (!isChasing && distance <= detectionRange)
         {
             isChasing = true;
+
+            if (!alertPlayed)
+            {
+                alertPlayed = true;
+
+                AudioManager.Instance.PlaySFX(alertSound);
+            }
         }
     }
 
     void ChasePlayer()
     {
+        AudioManager.Instance
+        .PlayLoopSFX(heartbeatSound);
+
         Vector2 direction =
             ((Vector2)player.position -
              (Vector2)transform.position).normalized;
@@ -133,6 +149,10 @@ public class GuardPatrol : MonoBehaviour
 
         if (distanceFromPost > maxChaseDistance)
         {
+            AudioManager.Instance.StopLoopSFX();
+
+            alertPlayed = false;
+
             isChasing = false;
             isReturning = true;
         }
@@ -141,6 +161,8 @@ public class GuardPatrol : MonoBehaviour
     //这个reset 很关键，可以写在报告里
     public void ResetGuard()
     {
+        AudioManager.Instance.StopLoopSFX();
+
         hasCaughtPlayer = false;
 
         isChasing = false;

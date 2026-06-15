@@ -36,6 +36,9 @@ MonoBehaviour
         Debug.Log("player caught! 玩家被抓，开始接下来的步骤");
         MissionTimer.Instance.StopTimer();
 
+        Debug.Log("暂停心跳声");
+        AudioManager.Instance.StopLoopSFX();
+
         Debug.Log("停止timer 完毕");
         MissionFailUI.Instance.Show();
         Debug.Log("显示mission fail 完毕");

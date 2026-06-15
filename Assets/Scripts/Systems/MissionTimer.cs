@@ -66,6 +66,9 @@ public class MissionTimer : MonoBehaviour
 
     void MissionFailed()
     {
+
+        AudioManager.Instance.StopLoopSFX();
+        Debug.Log("ÔİÍ£ĞÄÌøÉù");
         Debug.Log("Time Up!");
 
         SceneTransitionManager.Instance.targetSpawnPoint =
