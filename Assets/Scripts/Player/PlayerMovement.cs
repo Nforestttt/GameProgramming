@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     Vector2 movement;
 
+    public AudioClip footstepSound;
+
+    private float stepTimer;
+    public float stepInterval = 0.4f;
+
     /// <summary>
     /// Description: 
     /// this update function is used to update the movement of users, including two axies, horizontal and vertical
@@ -31,6 +36,20 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
+
+            stepTimer -= Time.deltaTime;
+
+            if (stepTimer <= 0)
+            {
+                AudioManager.Instance.PlaySFX(
+                    footstepSound);
+
+                stepTimer = stepInterval;
+            }
+        }
+        else
+        {
+            stepTimer = 0;
         }
     }
 

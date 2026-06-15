@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource musicSource;
     public AudioSource sfxSource;
+    public AudioSource loopSFXSource;
 
     private void Awake()
     {
@@ -36,5 +37,25 @@ public class AudioManager : MonoBehaviour
             return;
 
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlayLoopSFX(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+
+        if (loopSFXSource.clip == clip &&
+            loopSFXSource.isPlaying)
+            return;
+
+        loopSFXSource.clip = clip;
+        loopSFXSource.loop = true;
+        loopSFXSource.Play();
+
+    }
+
+    public void StopLoopSFX()
+    {
+        loopSFXSource.Stop();
     }
 }

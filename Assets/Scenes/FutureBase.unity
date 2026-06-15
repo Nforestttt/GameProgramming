@@ -8963,6 +8963,8 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1463888045}
   animator: {fileID: 1463888040}
+  footstepSound: {fileID: 8300000, guid: 44992877df078dd409a6a220b64645fb, type: 3}
+  stepInterval: 0.4
 --- !u!114 &1463888038
 MonoBehaviour:
   m_ObjectHideFlags: 0
