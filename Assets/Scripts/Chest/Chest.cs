@@ -22,18 +22,22 @@ IInteractable
 
     public int maxAttempts = 20;
 
+    [Header("Audio")]
+    public AudioClip chestOpenSound;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
     }
 
-    public void Interact(
-    GameObject interactor)
+    public void Interact(GameObject interactor)
     {
         if (opened)
             return;
 
         opened = true;
+
+        AudioManager.Instance.PlaySFX(chestOpenSound);
 
         sr.color = Color.gray;
 

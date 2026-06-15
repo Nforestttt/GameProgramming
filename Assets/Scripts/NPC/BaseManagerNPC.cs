@@ -47,6 +47,11 @@ public class BaseManagerNPC : MonoBehaviour
         "The future depends on every resource you recover."
     };
 
+    [Header("Audio")]
+    public AudioClip baseVoice;
+    public AudioClip submitSuccessSound;
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -77,14 +82,18 @@ public class BaseManagerNPC : MonoBehaviour
                     if (!tutorialCompleted)
                     {
                         DialogueManager.Instance
-                            .StartDialogue(introDialogue);
+                            .StartDialogue(
+                            introDialogue,
+                            baseVoice);
 
                         tutorialCompleted = true;
                     }
                     else
                     {
                         DialogueManager.Instance
-                            .StartDialogue(normalDialogue);
+                            .StartDialogue(
+                             normalDialogue,
+                            baseVoice);
                     }
                 }
 
@@ -168,6 +177,8 @@ public class BaseManagerNPC : MonoBehaviour
         }
 
         SupplyManager.Instance.AddSupply(totalSupply);
+
+        AudioManager.Instance.PlaySFX(submitSuccessSound);
 
         Debug.Log(
             "Submitted +" +
