@@ -181,6 +181,8 @@ MonoBehaviour:
   detectionRange: 3
   chaseSpeed: 5
   maxChaseDistance: 6
+  alertSound: {fileID: 8300000, guid: 6cdff9eb79d2e7344b4b941a65534a6b, type: 3}
+  heartbeatSound: {fileID: 8300000, guid: c4b25234b5d447b4faa82b7d6b8953ff, type: 3}
 --- !u!95 &63884884
 Animator:
   serializedVersion: 5
@@ -18402,6 +18404,8 @@ MonoBehaviour:
   detectionRange: 3
   chaseSpeed: 5
   maxChaseDistance: 6
+  alertSound: {fileID: 8300000, guid: 6cdff9eb79d2e7344b4b941a65534a6b, type: 3}
+  heartbeatSound: {fileID: 8300000, guid: c4b25234b5d447b4faa82b7d6b8953ff, type: 3}
 --- !u!95 &1240400823
 Animator:
   serializedVersion: 5
@@ -18903,7 +18907,7 @@ Transform:
   m_GameObject: {fileID: 1287084630}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.45, y: 4.36, z: 9.945104}
+  m_LocalPosition: {x: -9.61, y: 4.36, z: 9.945104}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
